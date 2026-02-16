@@ -4,6 +4,17 @@
 
 This project provides a comprehensive machine learning analysis comparing four different classifiers (K-Nearest Neighbors, Logistic Regression, Decision Trees, and Support Vector Machines) on the Bank Marketing dataset to predict whether a client will subscribe to a term deposit.
 
+## Jupyter Kernel Information
+
+**Which kernel to use?** This project uses the **Python 3 kernel (IPython kernel)**.
+
+📘 **For detailed kernel setup instructions, see [JUPYTER_KERNEL_SETUP.md](JUPYTER_KERNEL_SETUP.md)**
+
+Quick answer:
+- Install dependencies: `pip install -r requirements.txt`
+- Start Jupyter: `jupyter notebook prompt_III.ipynb`
+- Select kernel: **Python 3** (or create a custom kernel for virtual environments)
+
 ## Business Objective
 
 > **Predict whether a client will subscribe to a term deposit (yes/no) based on demographic, campaign, and economic features.**
@@ -71,18 +82,66 @@ git clone https://github.com/ru14/bank-marketing-classification.git
 cd bank-marketing-classification
 ```
 
-### 2. Install dependencies
+### 2. Set up Python environment (Recommended)
+
+**Option A: Using venv (Python 3.8+)**
+```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+# On Linux/Mac:
+source venv/bin/activate
+# On Windows:
+# venv\Scripts\activate
+```
+
+**Option B: Using conda**
+```bash
+# Create conda environment
+conda create -n bank-marketing python=3.8
+
+# Activate conda environment
+conda activate bank-marketing
+```
+
+### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Verify data file
+### 4. Verify data file
 Ensure the dataset exists at:
 ```
 data/bank-additional/bank-additional-full.csv
 ```
 
-### 4. Run the notebook
+### 5. Set up Jupyter Kernel
+
+**Which kernel to use:** This project uses the **Python 3** kernel (IPython kernel).
+
+After installing dependencies from `requirements.txt`, the IPython kernel will be available automatically. To verify:
+
+```bash
+# List available Jupyter kernels
+jupyter kernelspec list
+```
+
+You should see `python3` in the list.
+
+**If you created a virtual environment** and want to use it as a Jupyter kernel:
+
+```bash
+# Install ipykernel in your virtual environment
+pip install ipykernel
+
+# Add your environment as a Jupyter kernel
+python -m ipykernel install --user --name=bank-marketing --display-name="Python (bank-marketing)"
+```
+
+Then in Jupyter, select **Kernel → Change Kernel → Python (bank-marketing)**.
+
+### 6. Run the notebook
 ```bash
 jupyter notebook prompt_III.ipynb
 ```
@@ -99,11 +158,55 @@ jupyter lab
 3. **Review results:** Check model comparisons, feature importance, and recommendations
 4. **Customize:** Modify hyperparameters or add new models as needed
 
+## Troubleshooting Jupyter Kernel Issues
+
+### Kernel Not Found
+If Jupyter can't find the Python kernel:
+```bash
+# Install ipykernel
+pip install ipykernel
+
+# Register the kernel
+python -m ipykernel install --user
+```
+
+### Module Not Found Errors
+If you get `ModuleNotFoundError` when running cells:
+```bash
+# Ensure all dependencies are installed
+pip install -r requirements.txt
+
+# Verify installation in the correct environment
+pip list | grep -E "pandas|numpy|scikit-learn|jupyter"
+```
+
+### Kernel Keeps Dying
+If the kernel crashes repeatedly:
+- Check if you have enough memory (dataset is ~41K rows)
+- Restart Jupyter: `Ctrl+C` in terminal, then restart
+- Clear outputs: `Cell → All Output → Clear`
+- Restart kernel: `Kernel → Restart & Clear Output`
+
+### Wrong Python Version
+To check Python version in the notebook:
+```python
+import sys
+print(sys.version)
+```
+Should be Python 3.8 or higher.
+
+### Switching Kernels in Jupyter
+1. Open the notebook in Jupyter
+2. Click **Kernel** in the menu bar
+3. Select **Change Kernel**
+4. Choose **Python 3** or your custom kernel name
+
 ## Project Structure
 
 ```
 bank-marketing-classification/
 ├── README.md                          # This file
+├── JUPYTER_KERNEL_SETUP.md            # Detailed Jupyter kernel setup guide
 ├── requirements.txt                   # Python dependencies
 ├── prompt_III.ipynb                   # Main analysis notebook
 └── data/
