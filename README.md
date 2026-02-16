@@ -216,6 +216,9 @@ bank-marketing-classification/
 
 ## Notebook Contents
 
+### Executive Summary
+A comprehensive overview of the business problem, approach, key findings, business impact, and recommended actions - providing immediate clarity before diving into technical details.
+
 ### Problems 1-11 (All Fully Implemented):
 1. **Understanding the Data** - Background and context
 2. **Read in the Data** - Load and explore dataset
